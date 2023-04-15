@@ -1,11 +1,10 @@
 name: pdfarranger
 base: core22
 adopt-info: pdfarranger
-version: 1.7.0
 grade: stable
 confinement: strict
 compression: lzo
-icon: snap/gui/curtail.svg
+icon: snap/gui/pdfarg.svg
 architectures:
   - build-on: amd64
     build-for: amd64
@@ -15,7 +14,7 @@ slots:
   curtail:
     interface: dbus
     bus: session
-    name: com.github.huluti.Curtail
+    name: com.github.jeromerobert.pdfarranger
 
 
 environment:
@@ -23,37 +22,38 @@ environment:
   PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
 
 apps:
-  curtail:
-    command: usr/bin/curtail
+  pdfarranger:
+    command: usr/bin/pdfarranger
     extensions: [gnome]
-    common-id: com.github.huluti.Curtail
-    desktop: usr/share/applications/com.github.huluti.Curtail.desktop
+    common-id: com.github.jeromerobert.pdfarranger
+    desktop: usr/share/applications/com.github.jeromerobert.pdfarranger.desktop
    
    
 
-  curtail:
-    after: [oxipng, libadwaita]
-    source: https://github.com/Huluti/Curtail.git
-    source-tag: $SNAPCRAFT_PROJECT_VERSION
+  pdfarranger:
+    source: https://github.com/pdfarranger/pdfarranger.git
     plugin: meson
     meson-parameters:
-      - --prefix=/snap/curtail/current/usr
-    stage-packages:
-      - pngquant
-      - scour
-      - jpegoptim
-    override-pull: |
-      craftctl default
-      sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.huluti.Curtail.svg|' -i data/com.github.huluti.Curtail.desktop.in
+      - --prefix=/snap/pdfarranger/current/usr
+    build-packages:
+      - python3-pip
+      - python3-distutils-extra
+      - python3-wheel
+      - python3-gi
+      - python3-gi-cairo
+      - gir1.2-gtk-3.0
+      - gir1.2-poppler-0.18
+      - gir1.2-handy-1
+      - python3-setuptools
+      
+    #override-pull: |
+      #craftctl default
+      #sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.huluti.Curtail.svg|' -i data/com.github.huluti.Curtail.desktop.in
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
       sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
     organize:
-      snap/curtail/current/usr: usr
-    parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
-  oxipng:
-    source: https://github.com/shssoichiro/oxipng.git
-    plugin: rust
-    build-packages:
-      - cargo
+      snap/pdfarranger/current/usr: usr
+    #parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
+  
