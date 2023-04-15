@@ -1,6 +1,6 @@
-name: curtail
+name: pdfarranger
 base: core22
-adopt-info: curtail
+adopt-info: pdfarranger
 version: 1.7.0
 grade: stable
 confinement: strict
@@ -28,28 +28,7 @@ apps:
     extensions: [gnome]
     common-id: com.github.huluti.Curtail
     desktop: usr/share/applications/com.github.huluti.Curtail.desktop
-parts:
-  libadwaita:
-    after: [oxipng]
-    source: https://gitlab.gnome.org/GNOME/libadwaita.git
-    source-tag: '1.3.1'
-    plugin: meson
-    meson-parameters:
-      - --prefix=/usr
-      - -Doptimization=3
-      - -Ddebug=true
-      - -Dintrospection=enabled
-      - -Dvapi=true
-      - -Dtests=false
-      - -Dexamples=false
-    build-packages:
-      - sassc
-    override-pull: |
-      craftctl default
-      sed -e 's/-W\(format-nonliteral\)\b/-Wno-\1/g' -i meson.build
-    prime:
-      - usr/lib/*/*adw*
-      - usr/lib/*/*/Adw*      
+   
    
 
   curtail:
