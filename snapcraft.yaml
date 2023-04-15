@@ -29,7 +29,7 @@ apps:
     desktop: usr/share/applications/com.github.jeromerobert.pdfarranger.desktop
    
    
-
+parts:
   pdfarranger:
     source: https://github.com/pdfarranger/pdfarranger.git
     plugin: python
