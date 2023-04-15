@@ -32,9 +32,11 @@ apps:
 
   pdfarranger:
     source: https://github.com/pdfarranger/pdfarranger.git
-    plugin: meson
-    meson-parameters:
-      - --prefix=/snap/pdfarranger/current/usr
+    plugin: python
+    build-environment:
+      # WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
     build-packages:
       - python3-pip
       - python3-distutils-extra
@@ -49,11 +51,6 @@ apps:
     #override-pull: |
       #craftctl default
       #sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.huluti.Curtail.svg|' -i data/com.github.huluti.Curtail.desktop.in
-    override-build: |
-      craftctl default
-      # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
-      sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/curtail/current/usr/bin/curtail
-    organize:
-      snap/pdfarranger/current/usr: usr
+    
     #parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
   
