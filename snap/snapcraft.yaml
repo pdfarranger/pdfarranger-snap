@@ -25,7 +25,7 @@ environment:
 
 apps:
   pdfarranger:
-    command: usr/bin/pdfarranger
+    command: install/bin/pdfarranger
     extensions: [gnome]
     common-id: com.github.jeromerobert.pdfarranger
  #desktop: usr/share/applications/com.github.jeromerobert.pdfarranger.desktop
