@@ -1,10 +1,12 @@
 name: pdfarranger
 base: core22
 adopt-info: pdfarranger
+summary: Simple Pdf Tweaker based on pike pdf
+description: |
+  Simple yet powerful PDF Tweaker built in Gtk and Python.
 grade: stable
 confinement: strict
 compression: lzo
-#icon: snap/gui/pdfarg.svg
 architectures:
   - build-on: amd64
     build-for: amd64
@@ -55,6 +57,5 @@ parts:
       craftctl set version=$(git describe --tags --abbrev=0)
       
    #sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jeromerobert.pdfarranger.svg|' -i data/com.github.huluti.Curtail.desktop.in
-    
-    parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
+   #parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
   
