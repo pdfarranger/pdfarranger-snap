@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PDF Arranger
+Type=Application
+Exec=pdfarranger %U
+Icon=${SNAP}/meta/gui/pdf.svg
+MimeType=application/pdf;application/postscript;application/x-ext-pdf;image/x-bmp;image/bmp;image/gif;image/tiff;image/jp2;image/jpeg;image/jpg;image/png;image/x-icon;image/x-portable-pixmap;image/x-gray;image/x-ico;image/x-png;image/vnd.zbrush.pcx;image/x-pcx;
+Categories=Office;
+Terminal=false
+StartupNotify=false
+Keywords=pdfarranger;pdfshuffler;PDF Shuffler;
+Comment=PDF Merging, Rearranging, Splitting, Rotating and Cropping
