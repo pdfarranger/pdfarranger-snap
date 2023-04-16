@@ -19,9 +19,9 @@ slots:
     name: com.github.jeromerobert.pdfarranger
 
 
-environment:
+#environment:
   # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
+  #PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
 
 apps:
   pdfarranger:
@@ -37,10 +37,10 @@ parts:
     plugin: python
     python-packages:
       - distutils-extra-python==2.39.2
-    build-environment:
+    #build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
-      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      - PYTHONPATH: ""
+      #- PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      #- PYTHONPATH: ""
     build-packages:
       - python3-pip
       - python3-distutils-extra
