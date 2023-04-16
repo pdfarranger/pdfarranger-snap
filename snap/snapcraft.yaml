@@ -33,6 +33,8 @@ parts:
   pdfarranger:
     source: https://github.com/pdfarranger/pdfarranger.git
     plugin: python
+    python-packages:
+      - distutils-extra-python==2.39.2
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
