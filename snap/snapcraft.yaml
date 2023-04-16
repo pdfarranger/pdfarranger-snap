@@ -56,5 +56,5 @@ parts:
       
    #sed -e 's|Icon=com.github.huluti.Curtail|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jeromerobert.pdfarranger.svg|' -i data/com.github.huluti.Curtail.desktop.in
     
-    #parse-info: [usr/share/metainfo/com.github.huluti.Curtail.appdata.xml]
+    parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
   
