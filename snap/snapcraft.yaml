@@ -37,10 +37,10 @@ parts:
     plugin: python
     python-packages:
       - distutils-extra-python==2.39.2
-    #build-environment:
-      # WORKAROUND: The python plugin is broken with gnome extension
-      #- PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      #- PYTHONPATH: ""
+    build-environment:
+    #WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
     build-packages:
       - python3-pip
       - python3-distutils-extra
