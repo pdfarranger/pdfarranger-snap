@@ -12,7 +12,7 @@ architectures:
     build-for: amd64
     
 slots:
-  curtail:
+  pdfarranger:
     interface: dbus
     bus: session
     name: com.github.jeromerobert.pdfarranger
