@@ -1,9 +1,6 @@
 name: pdfarranger
 base: core22
 adopt-info: pdfarranger
-summary: Simple Pdf Tweaker based on pike pdf
-description: |
-  Simple yet powerful PDF Tweaker built in Gtk and Python.
 grade: stable
 confinement: strict
 compression: lzo
