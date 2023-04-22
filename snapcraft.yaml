@@ -1,0 +1,75 @@
+name: pdfarranger
+base: core22
+adopt-info: pdfarranger
+summary: Simple Pdf Tweaker based on pike pdf
+description: |
+  Simple yet powerful PDF Tweaker built in Gtk and Python.
+grade: stable
+confinement: strict
+compression: lzo
+architectures:
+  - build-on: amd64
+    build-for: amd64
+    
+slots:
+  pdfarranger:
+    interface: dbus
+    bus: session
+    name: com.github.jeromerobert.pdfarranger
+
+environment:
+  # WORKAROUND: Add python modules in Snap to search path
+  PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
+  
+apps:
+  pdfarranger:
+    command: bin/pdfarranger
+    extensions: [gnome]
+    common-id: com.github.jeromerobert.pdfarranger
+    desktop: usr/share/applications/com.github.jeromerobert.pdfarranger.desktop
+   
+   
+parts:
+  pdfarranger:
+    source: https://github.com/pdfarranger/pdfarranger.git
+    plugin: python
+    python-packages:
+      - distutils-extra-python==2.39.2
+    build-environment:
+    #WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
+    build-packages:
+      - python3-pip
+      - python3-distutils-extra
+      - python3-wheel
+      - python3-gi
+      - python3-img2pdf
+      - python3-gi-cairo
+      - gir1.2-gtk-3.0
+      - gir1.2-poppler-0.18
+      - gir1.2-handy-1
+      - python3-setuptools
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0)
+  #sed -e 's|Icon=com.github.jeromerobert.pdfarranger|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jeromerobert.pdfarranger.svg|' -i data/com.github.jeromerobert.pdfarranger.desktop
+    stage:
+      # WORKAROUND: Skip venv from python plugin
+      - -bin/activate
+      - -bin/activate.csh
+      - -bin/activate.fish
+      - -bin/Activate.ps1
+      - -bin/python
+      - -bin/python3
+      - -bin/python3.10
+      - -bin/pip
+      - -bin/pip3
+      - -bin/pip3.10
+      - -pyvenv.cfg
+    
+    parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
+    
+   
+   
+  
