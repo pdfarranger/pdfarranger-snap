@@ -33,6 +33,7 @@ parts:
   pdfarranger:
     source: https://github.com/pdfarranger/pdfarranger.git
     plugin: python
+    parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
     python-packages:
       - distutils-extra-python==2.39.2
     build-environment:
@@ -53,7 +54,7 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
-  #sed -e 's|Icon=com.github.jeromerobert.pdfarranger|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jeromerobert.pdfarranger.svg|' -i data/com.github.jeromerobert.pdfarranger.desktop
+      
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate
@@ -68,7 +69,7 @@ parts:
       - -bin/pip3.10
       - -pyvenv.cfg
     
-    parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
+    
     
    
    
