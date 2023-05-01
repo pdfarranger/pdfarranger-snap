@@ -1,9 +1,6 @@
 name: pdfarranger
 base: core22
 adopt-info: pdfarranger
-summary: Powerful Pdf Tweaker
-description: |
-  Simple Yet Powerful Pdf Tweaker based on Pike Pdf.
 grade: stable
 confinement: strict
 compression: lzo
