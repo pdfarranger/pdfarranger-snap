@@ -2,9 +2,6 @@ name: pdfarranger
 base: core22
 adopt-info: pdfarranger
 grade: stable
-summary: Powerful Pdf Tweaker
-description: |
-  Simple Yet Powerful Pdf Tweaker based on Pike Pdf.
 confinement: strict
 compression: lzo
 architectures:
@@ -24,14 +21,14 @@ apps:
     command: bin/pdfarranger
     extensions: [gnome]
     common-id: com.github.jeromerobert.pdfarranger
-    desktop: usr/share/applications/com.github.jeromerobert.pdfarranger.desktop
+    desktop: share/applications/com.github.jeromerobert.pdfarranger.desktop
    
    
 parts:
   pdfarranger:
     source: https://github.com/pdfarranger/pdfarranger.git
     plugin: python
-    parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
+    parse-info: [share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
     python-packages:
       - distutils-extra-python==2.39.2
     build-environment:
