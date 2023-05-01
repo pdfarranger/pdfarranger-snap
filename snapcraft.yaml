@@ -10,17 +10,15 @@ compression: lzo
 architectures:
   - build-on: amd64
     build-for: amd64
-    
+environment:
+   PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
+   
 slots:
   pdfarranger:
     interface: dbus
     bus: session
     name: com.github.jeromerobert.pdfarranger
 
-environment:
-  # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
-  
 apps:
   pdfarranger:
     command: bin/pdfarranger
@@ -53,8 +51,7 @@ parts:
       - python3-setuptools
     override-pull: |
       craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0)
-      
+      craftctl set version=$(git describe --tags --abbrev=0)  
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate
