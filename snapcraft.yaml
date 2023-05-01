@@ -20,6 +20,8 @@ apps:
   pdfarranger:
     command: bin/pdfarranger
     extensions: [gnome]
+    environment:
+            PDFARRANGER_USER_DIR: $SNAP_USER_DATA
     common-id: com.github.jeromerobert.pdfarranger
     desktop: share/applications/com.github.jeromerobert.pdfarranger.desktop
    
