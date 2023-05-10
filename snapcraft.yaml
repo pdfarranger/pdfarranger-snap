@@ -19,6 +19,7 @@ slots:
 apps:
   pdfarranger:
     command: bin/pdfarranger
+    LD_LIBRARY_PATH: $SNAP/lib/python3.10/site-packages
     extensions: [gnome]
     plugs:
       - home
@@ -56,7 +57,10 @@ parts:
       - python3-setuptools
     override-pull: |
       craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0)  
+      craftctl set version=$(git describe --tags --abbrev=0) 
+    override-prime: |
+      craftctl default
+      chmod 0755 ./bin/pdfarranger
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate
