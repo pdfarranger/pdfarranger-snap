@@ -19,8 +19,9 @@ slots:
 apps:
   pdfarranger:
     command: bin/pdfarranger
-    LD_LIBRARY_PATH: $SNAP/lib/python3.10/site-packages
     extensions: [gnome]
+    environment:
+      LD_LIBRARY_PATH: $SNAP/lib/python3.10/site-packages
     plugs:
       - home
       - raw-usb
