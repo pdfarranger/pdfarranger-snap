@@ -7,10 +7,7 @@ compression: lzo
 architectures:
   - build-on: amd64
     build-for: amd64
-    
-environment:
-   PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
-   
+       
 slots:
   pdfarranger:
     interface: dbus
@@ -21,6 +18,8 @@ apps:
   pdfarranger:
     command: bin/pdfarranger
     extensions: [gnome]
+    environment:
+      PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
     plugs:
       - home
       - raw-usb
