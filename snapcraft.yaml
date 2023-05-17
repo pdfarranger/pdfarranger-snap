@@ -45,7 +45,6 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
-      sed -i 's/^certifi\b/#\0/' requirements.txt
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate
