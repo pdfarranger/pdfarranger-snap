@@ -39,10 +39,6 @@ parts:
     source-tag: 1.9.2 
     python-packages:
       - distutils-extra-python==2.39.2
-      - img2pdf==0.4.4
-      - setuptools==67.7.2
-      - wheel==0.40.0
-      - pip==23.1.2
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
