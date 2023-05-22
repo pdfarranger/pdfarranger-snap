@@ -45,7 +45,6 @@ parts:
       - PYTHONPATH: ""
     build-packages:
       - python3-pip
-      - python3-distutils-extra
       - python3-wheel
       - python3-gi
       - img2pdf
