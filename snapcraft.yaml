@@ -6,17 +6,17 @@ confinement: strict
 compression: lzo
 architectures:
   - build-on: amd64
-    build-for: amd64
-
-environment:
-  # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
+  - build-on: arm64
 
 slots:
   pdfarranger:
     interface: dbus
     bus: session
     name: com.github.jeromerobert.pdfarranger
+
+plugs:
+  shared-memory:
+    private: true
 
 apps:
   pdfarranger:
@@ -39,16 +39,30 @@ parts:
     source-tag: 1.9.2 
     python-packages:
       - distutils-extra-python==2.39.2
+      #- img2pdf==0.4.4
+      - lxml==4.9.2
+      - packaging==23.1
+      - pillow==9.5.0
+      - pybind11==2.10.4
+      - setuptools-scm==7.1.0
+      - tomli==2.0.1
+      - typing_extensions==4.6.3
+      - deprecation==2.1.0
+      - pikepdf==7.2.0
+      - python_dateutil==2.8.2
+      - wheel
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: ""
     build-packages:
+      - intltool
       - python3-img2pdf
-    override-pull: |
-      craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0)
-    stage:
+    stage-packages:
+      - gir1.2-poppler-0.18
+      - libpoppler-glib8
+      - libqpdf28
+    prime:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate
       - -bin/activate.csh
