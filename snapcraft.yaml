@@ -27,6 +27,7 @@ apps:
     common-id: com.github.jeromerobert.pdfarranger
     environment:
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
+      LD_LIBRARY_PATH: $SNAP/usr/lib:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
 
 
 parts:
@@ -48,7 +49,6 @@ parts:
       - pikepdf==7.2.0
       - python_dateutil==2.8.2
       - img2pdf==0.4.4
-      - distutils-extra-python==2.39.2
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
