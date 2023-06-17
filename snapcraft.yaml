@@ -24,20 +24,17 @@ apps:
     extensions: [gnome]
     plugs:
       - home
-      - network
-      - optical-drive
-      - removable-media
     common-id: com.github.jeromerobert.pdfarranger
     environment:
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
-   
-   
+
+
 parts:
   pdfarranger:
     plugin: python
     source: https://github.com/pdfarranger/pdfarranger.git
     parse-info: [usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml]
-    source-tag: 1.9.2 
+    source-tag: 1.9.2
     python-packages:
       - distutils-extra-python==2.39.2
       - lxml==4.9.2
@@ -95,12 +92,12 @@ parts:
       - gir1.2-poppler-0.18
       - libpoppler118
       - libpoppler-glib8
-      - libqpdf28 
+      - libqpdf28
     prime:
-      - usr/lib/x86_64-linux-gnu/girepository-1.0/Poppler-0.18.typelib
-      - usr/lib/x86_64-linux-gnu/libpoppler.so.118
-      - usr/lib/x86_64-linux-gnu/libpoppler.so.118.0.0
-      - usr/lib/x86_64-linux-gnu/libpoppler-glib.so.8
-      - usr/lib/x86_64-linux-gnu/libpoppler-glib.so.8.23.0
-      - usr/lib/x86_64-linux-gnu/libqpdf.so.28
-      - usr/lib/x86_64-linux-gnu/libqpdf.so.28.6.3
+      - usr/lib/$CRAFT_ARCH_TRIPLET/girepository-1.0/Poppler-0.18.typelib
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler.so.118
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler.so.118.0.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler-glib.so.8
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler-glib.so.8.23.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libqpdf.so.28
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libqpdf.so.28.6.3
