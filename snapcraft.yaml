@@ -21,9 +21,6 @@ apps:
     - gnome
     plugs:
     - home
-    - network
-    - optical-drive
-    - removable-media
     common-id: com.github.jeromerobert.pdfarranger
     environment:
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
@@ -47,7 +44,6 @@ parts:
     - pikepdf==7.2.0
     - python_dateutil==2.8.2
     - img2pdf==0.4.4
-    - distutils-extra-python==2.39.2
     build-environment:
     - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
     - PYTHONPATH: ''
@@ -90,10 +86,10 @@ parts:
     - libpoppler-glib8
     - libqpdf28
     prime:
-    - usr/lib/x86_64-linux-gnu/girepository-1.0/Poppler-0.18.typelib
-    - usr/lib/x86_64-linux-gnu/libpoppler.so.118
-    - usr/lib/x86_64-linux-gnu/libpoppler.so.118.0.0
-    - usr/lib/x86_64-linux-gnu/libpoppler-glib.so.8
-    - usr/lib/x86_64-linux-gnu/libpoppler-glib.so.8.23.0
-    - usr/lib/x86_64-linux-gnu/libqpdf.so.28
-    - usr/lib/x86_64-linux-gnu/libqpdf.so.28.6.3
+    - usr/lib/$CRAFT_ARCH_TRIPLET/girepository-1.0/Poppler-0.18.typelib
+    - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler.so.118
+    - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler.so.118.0.0
+    - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler-glib.so.8
+    - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler-glib.so.8.23.0
+    - usr/lib/$CRAFT_ARCH_TRIPLET/libqpdf.so.28
+    - usr/lib/$CRAFT_ARCH_TRIPLET/libqpdf.so.28.6.3
