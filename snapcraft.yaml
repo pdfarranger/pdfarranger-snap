@@ -7,6 +7,7 @@ compression: lzo
 architectures:
   - build-on: amd64
   - build-on: arm64
+
 slots:
   pdfarranger:
     interface: dbus
@@ -15,6 +16,7 @@ slots:
 plugs:
   shared-memory:
     private: true
+
 apps:
   pdfarranger:
     command: usr/bin/pdfarranger
@@ -32,7 +34,8 @@ parts:
     source: https://github.com/pdfarranger/pdfarranger.git
     parse-info:
       - usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml
-    source-tag: 1.9.2
+    source-tag: '1.9.2'
+    source-depth: 1
     python-packages:
       - distutils-extra-python==2.39.2
       - lxml==4.9.2
