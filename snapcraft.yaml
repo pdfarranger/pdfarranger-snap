@@ -36,6 +36,9 @@ parts:
       - usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml
     source-tag: '1.10.0'
     source-depth: 1
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
     python-packages:
       - distutils-extra-python==2.39.2
       - lxml==4.9.2
