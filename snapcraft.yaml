@@ -36,9 +36,6 @@ parts:
       - usr/share/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml
     source-tag: '1.10.0'
     source-depth: 1
-    override-pull: |
-      craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
     python-packages:
       - distutils-extra-python==2.39.2
       - lxml==4.9.2
@@ -87,12 +84,16 @@ parts:
       share: usr/share
       lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
   deps:
+    after: [ pdfarranger ]
     plugin: nil
     stage-packages:
       - gir1.2-poppler-0.18
       - libpoppler118
       - libpoppler-glib8
       - libqpdf28
+    override-prime: |
+      craftctl default
+      echo $SNAPCRAFT_PROJECT_VERSION
     prime:
       - usr/lib/$CRAFT_ARCH_TRIPLET/girepository-1.0/Poppler-0.18.typelib
       - usr/lib/$CRAFT_ARCH_TRIPLET/libpoppler.so.118
