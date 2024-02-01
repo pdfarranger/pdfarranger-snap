@@ -4,6 +4,12 @@ adopt-info: pdfarranger
 grade: stable
 confinement: strict
 compression: lzo
+contact: https://github.com/pdfarranger/pdfarranger-snap/issues
+website: https://github.com/pdfarranger/pdfarranger
+issues: https://github.com/pdfarranger/pdfarranger/issues
+source-code: https://github.com/pdfarranger/pdfarranger
+license: GPL-3.0-only
+
 architectures:
   - build-on: amd64
   - build-on: arm64
@@ -13,6 +19,7 @@ slots:
     interface: dbus
     bus: session
     name: com.github.jeromerobert.pdfarranger
+
 plugs:
   shared-memory:
     private: true
@@ -83,6 +90,7 @@ parts:
       bin: usr/bin
       share: usr/share
       lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
+
   deps:
     after: [ pdfarranger ]
     plugin: nil
