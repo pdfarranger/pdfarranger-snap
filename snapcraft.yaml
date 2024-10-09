@@ -44,18 +44,18 @@ parts:
     source-tag: '1.11.0'
     source-depth: 1
     python-packages:
-      - distutils-extra-python==2.39.2
-      - lxml==4.9.2
-      - packaging==23.1
-      - pillow==9.5.0
-      - pybind11==2.10.4
-      - setuptools-scm==7.1.0
-      - tomli==2.0.1
-      - typing_extensions==4.6.3
-      - deprecation==2.1.0
-      - pikepdf==7.2.0
-      - python_dateutil==2.8.2
-      - img2pdf==0.4.4
+      - distutils-extra-python
+      - lxml
+      - packaging
+      - pillow
+      - pybind11
+      - setuptools-scm
+      - tomli
+      - typing_extensions
+      - deprecation
+      - pikepdf
+      - python_dateutil
+      - img2pdf
     build-environment:
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: ''
