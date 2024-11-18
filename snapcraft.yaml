@@ -32,6 +32,7 @@ apps:
       - gnome
     plugs:
       - home
+      - removable-media
     common-id: com.github.jeromerobert.pdfarranger
     environment:
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
